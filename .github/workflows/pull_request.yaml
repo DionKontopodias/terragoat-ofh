@@ -14,3 +14,14 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: terraform/
+      
+      - name: Upload SARIF file
+        uses: actions/upload-artifact@v2
+        with:
+          name: Trivy SARIF Results
+          path: results.sarif
+     
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'results.sarif'
