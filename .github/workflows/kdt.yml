@@ -15,4 +15,5 @@ jobs:
 
       - name: Run a SAST scan
         run: |
+          kdt list scanners
           kdt scan --host https://ourfuturehealth.kondukto.io --token {{secrets.GH_TOKEN}} -p terragoat -t KICS -b master 
